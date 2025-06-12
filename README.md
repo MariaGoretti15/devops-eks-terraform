@@ -108,9 +108,6 @@ Copy the `EXTERNAL-IP` under the LoadBalancer type service, and open it in your 
 
 You should see the **NGINX welcome page**.
 
-[🔗 Click to view deployed application](http://a7685e2dccbdd4b2497bf0c8aa159a4a-1157489994.us-east-1.elb.amazonaws.com/)
-
-
 ---
 
 ### ✅ Expected Output
