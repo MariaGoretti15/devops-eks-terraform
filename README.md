@@ -100,3 +100,8 @@ If you used an Application Load Balancer (ALB), use the DNS name provided by the
 To avoid AWS charges, destroy all resources when you're finished:
 
 terraform destroy
+
+
+
+[Click here to view app](http://a7685e2dccbdd4b2497bf0c8aa159a4a-1157489994.us-east-1.elb.amazonaws.com/)
+
