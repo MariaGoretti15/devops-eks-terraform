@@ -33,7 +33,8 @@ Before you start, make sure you have the following installed and configured:
 
 ### 1. Clone the Repository
 
-git clone git@github.com:MariaGoretti15/devops-eks-terraform.git
+git clone https://github.com/your-username/your-repository.git
+
 cd devops-eks-terraform
 
 ### 2. Initialize Terraform
