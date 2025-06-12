@@ -102,6 +102,18 @@ To avoid AWS charges, destroy all resources when you're finished:
 terraform destroy
 
 
+### ✅ Access the Application
 
-[Click here to view app](http://a7685e2dccbdd4b2497bf0c8aa159a4a-1157489994.us-east-1.elb.amazonaws.com/)
+Copy the `EXTERNAL-IP` under the LoadBalancer type service, and open it in your browser.
+
+You should see the **NGINX welcome page**.
+
+---
+
+### ✅ Expected Output
+
+- The **NGINX welcome page** confirming the application is running  
+- A **publicly accessible URL** served from your EKS cluster  
+- **Terraform output** indicating successful resource creation  
+
 
