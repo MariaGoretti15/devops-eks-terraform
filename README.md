@@ -1,4 +1,3 @@
-# devops-eks-terraform
 # Hiive DevOps Take-Home Assignment
 
 ## Overview
