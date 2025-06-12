@@ -1,36 +1,101 @@
-# Hiive DevOps Take-Home Assignment
+# DevOps Assignment: Terraform + EKS Containerized Deployment
 
-## Overview
-
-This repository contains a complete Terraform-based solution to deploy a containerized service to an AWS Elastic Kubernetes Service (EKS) cluster. The project provisions all necessary infrastructure including:
-
-- VPC with public and private subnets
-- Internet Gateway and NAT Gateway
-- Security groups
-- IAM roles for EKS and worker nodes
-- EKS Cluster (with managed node group)
-- Kubernetes deployment of an `nginx` container
-- LoadBalancer service to expose the deployment
-
-The goal is to demonstrate infrastructure automation using Infrastructure as Code (IaC) and Kubernetes orchestration.
+This project demonstrates how to deploy a containerized application end-to-end on AWS EKS using Terraform. The infrastructure is provisioned as code, ensuring repeatability and scalability.
 
 ---
 
-## Prerequisites
+## 🚀 Project Overview
 
-Ensure the following tools are installed and properly configured:
+This project uses Terraform to provision an AWS EKS cluster and deploys a containerized application onto it. The app is packaged as a Docker container, managed with Kubernetes manifests, and deployed on the EKS cluster. This approach enables infrastructure automation, version control, and easy scaling.
 
-- [Terraform v1.4+](https://www.terraform.io/downloads.html)
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- An AWS account and IAM user/role with sufficient permissions to create EKS, IAM roles, networking, etc.
+### Key Design Decisions
+
+- **Terraform for Infrastructure as Code (IaC):** To ensure consistent and repeatable infrastructure provisioning.
+- **EKS for Managed Kubernetes:** Offloads cluster management to AWS, reducing operational overhead.
+- **Dockerized Application:** Containerization ensures consistent app behavior across environments.
+- **Separation of Concerns:** Terraform handles infrastructure, Kubernetes manifests handle app deployment, allowing flexible updates.
 
 ---
 
-## Deployment Instructions
+## 📋 Prerequisites
 
-> ⏱️ Estimated time to deploy: **15–25 minutes**
+Before you start, make sure you have the following installed and configured:
+
+- [AWS CLI](https://aws.amazon.com/cli/) configured with appropriate credentials and permissions.
+- [Terraform](https://www.terraform.io/downloads.html)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [Docker](https://www.docker.com/get-started)
+- [Git](https://git-scm.com/)
+
+---
+
+## ⚙️ Step-by-Step Deployment Instructions
 
 ### 1. Clone the Repository
 
+git clone git@github.com:MariaGoretti15/devops-eks-terraform.git
+cd devops-eks-terraform
 
+### 2. Initialize Terraform
+
+Run the following command to initialize Terraform:
+
+terraform init
+
+### 3. Review Terraform Plan
+
+Run the following command to review the execution plan:
+
+terraform plan
+### 4. Apply Terraform Configuration
+
+Run the following command to apply the Terraform configuration:
+
+terraform apply
+
+Type `yes` to confirm. Terraform will provision:
+
+- VPC and networking components
+- EKS cluster
+- IAM roles and policies
+- Node groups and other required resources
+
+### 5. Configure kubectl to Use the New Cluster
+
+Update your kubeconfig to point to the newly created EKS cluster:
+
+aws eks --region <aws-region> update-kubeconfig --name <cluster-name>
+
+### 6. Deploy Kubernetes Resources
+
+Apply the Kubernetes manifests:
+
+kubectl apply -f k8s/
+
+(This will deploy your application to the EKS cluster)
+
+### 7. Verify Deployment
+
+Check the status of your pods and services:
+
+
+kubectl get pods
+
+kubectl get services
+
+(Ensure all pods are in the Running state)
+
+### Accessing the Application
+
+If your Kubernetes service is of type LoadBalancer, retrieve the external IP or DNS:
+
+kubectl get svc
+
+(Open the external IP or DNS in your browser to view the app.
+If you used an Application Load Balancer (ALB), use the DNS name provided by the ALB)
+
+### Clean Up Resources
+
+To avoid AWS charges, destroy all resources when you're finished:
+
+terraform destroy
