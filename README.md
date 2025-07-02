@@ -114,7 +114,7 @@ You should see the **NGINX welcome page**.
 
 - The **NGINX welcome page** confirming the application is running  
 - A **publicly accessible URL** served from your EKS cluster  
-- **Terraform output** indicating successful resource creation  
+- **Terraform output** indicating successful resource creations
 
   
 
